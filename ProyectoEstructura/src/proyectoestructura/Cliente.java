@@ -5,7 +5,7 @@ package proyectoestructura;
  * @author valer
  */
 public class Cliente {
-    
+
     private String idCliente;
     private String nombre;
     private String apellido;
@@ -69,7 +69,11 @@ public class Cliente {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-    
-    
-    
+
+    @Override
+    public String toString() {
+        return "ID: " + idCliente + ", Nombre: " + nombre + ", Apellido: " + apellido
+                + ", Correo: " + correo + ", Teléfono: " + telefono + ", Dirección: " + direccion;
+    }
+
 }
