@@ -33,6 +33,9 @@ public class Principal {
         reporte ???
         
         */
+        
+        Menu m = new Menu();
+        m.menuPrincipal();
     }
     
 }

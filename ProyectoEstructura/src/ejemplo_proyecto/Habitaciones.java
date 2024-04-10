@@ -1,30 +1,36 @@
-package proyectoestructura;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package ejemplo_proyecto;
 
 /**
  *
  * @author valer
  */
-public class Habitacion {
+public class Habitaciones {
     private int idHabitacion;
     private String tipo;
     private int cantidadCamas;
     private String disponibilidad;
     private double precio;
-    
-    public Habitacion(int idHabitacion, String tipo, int cantidadCamas, String disponibilidad, double precio) {
+   
+
+
+    public Habitaciones(int idHabitacion, String tipo, int cantidadCamas, String disponibilidad, double precio) {
         this.idHabitacion = idHabitacion;
         this.tipo = tipo;
         this.cantidadCamas = cantidadCamas;
         this.disponibilidad = disponibilidad;
         this.precio = precio;
     }
-    
-    public Habitacion() {
-        this.idHabitacion = 0;
-        this.tipo = "";
-        this.cantidadCamas = 0;
-        this.disponibilidad = "";
-        this.precio = 0.0d;
+
+    public String getDisponibilidad() {
+        return disponibilidad;
+    }
+
+    public void setDisponibilidad(String disponibilidad) {
+        this.disponibilidad = disponibilidad;
     }
 
     public int getIdHabitacion() {
@@ -50,15 +56,7 @@ public class Habitacion {
     public void setCantidadCamas(int cantidadCamas) {
         this.cantidadCamas = cantidadCamas;
     }
-
-    public String getDisponibilidad() {
-        return disponibilidad;
-    }
-
-    public void setDisponibilidad(String disponibilidad) {
-        this.disponibilidad = disponibilidad;
-    }
-
+    
     public double getPrecio() {
         return precio;
     }
@@ -66,11 +64,12 @@ public class Habitacion {
     public void setPrecio(double precio) {
         this.precio = precio;
     }
-    
+
     @Override
     public String toString() {
-        return "\n[ID: "+ idHabitacion+", Tipo: "+ tipo+", Camas: "+ cantidadCamas+ ", Precio: "+ precio+']';
+        return "Habitaciones{" + "idHabitacion=" + idHabitacion + ", tipo=" + tipo + ", cantidadCamas=" + cantidadCamas + ", disponibilidad=" + disponibilidad + ", precio=" + precio + '}';
     }
+    
     
     
 }
