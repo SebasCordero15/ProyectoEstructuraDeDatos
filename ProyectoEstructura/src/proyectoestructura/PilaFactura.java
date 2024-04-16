@@ -11,8 +11,8 @@ import javax.swing.JOptionPane;
  * @author sebas
  */
 public class PilaFactura {
+
     private NodoFactura cima;
-    
 
     public PilaFactura() {
         this.cima = null;
@@ -32,7 +32,21 @@ public class PilaFactura {
         Factura f = new Factura();
         f.setCedula(JOptionPane.showInputDialog("Ingrese la cedula del cliente: "));
         f.setNombre(JOptionPane.showInputDialog("Ingrese el nombre del cliente: "));
-        f.setTipoHabitacion(JOptionPane.showInputDialog("Ingrese el tipo de habitacion: "));
+        String[] tipoHabitacion = {"Estandar", "Deluxe"};
+        int tipo = JOptionPane.showOptionDialog(null, "Tipo de Habitación", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, tipoHabitacion, "Menu");
+        String tipoH;
+        switch (tipo) {
+            case 0:
+                tipoH = "Estandar";
+                break;
+            case 1:
+                tipoH = "Deluxe";
+                break;
+            default:
+                tipoH = ""; // Manejar cualquier otro caso que no esté cubierto
+                break;
+        }
+        f.setTipoHabitacion(tipoH);
         f.setCantidadNoches(Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de noches: ")));
 
         NodoFactura nuevo = new NodoFactura();
@@ -54,10 +68,11 @@ public class PilaFactura {
         if (!vacia()) {
             String s = "";
             NodoFactura aux = cima;
+            int subtotal = calcularSubtotal();
             while (aux != null) {
                 s += "\n------FACTURAS-------\n" + "\nCedula:" + aux.getDato().getCedula() + "\nNombre: " + aux.getDato().getNombre() + "\nTipo Habitacion: "
                         + aux.getDato().getTipoHabitacion() + "\nCantidad de noches: " + aux.getDato().getCantidadNoches() + "\nSubtotal: "
-                        + aux.getDato().getSubtotal() + "\nTotal: " + aux.getDato().getTotal() + "\n---------------------------------";
+                        + subtotal + "\nTotal: " + MontoTotal() + "\n---------------------------------";
                 aux = aux.getSiguiente();
             }
             JOptionPane.showMessageDialog(null, "Contenido de la Pila: \n" + s,
@@ -67,15 +82,32 @@ public class PilaFactura {
                     "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-    public int calcularSubtotal(){
-        Factura f=new Factura();
-        int Noche = 20000;
-        f.setSubtotal(f.getCantidadNoches() * Noche);
-        return (int) f.getSubtotal();
+
+    public int calcularSubtotal() {
+        int total = 0;
+        if (!vacia() && cima.getDato() != null) {
+            Factura factura = cima.getDato();
+            int precioPorNoche = 0;
+            if (factura.getTipoHabitacion().equals("Estandar")) {
+                precioPorNoche = 20000;
+            } else if (factura.getTipoHabitacion().equals("Deluxe")) {
+                precioPorNoche = 40000;
+            }
+            total = precioPorNoche * factura.getCantidadNoches();
+            
+        }
+        return total;
     }
-    public int MontoTotal(){
-        Factura f=new Factura();
-        f.setTotal(f.getSubtotal() * 0.13);
-        return (int) f.getTotal();
+
+    public int MontoTotal() {
+        if (!vacia() && cima.getDato() != null) {
+            Factura factura = cima.getDato();
+            double subtotal = calcularSubtotal();
+            double iva = subtotal * 0.13;
+            double total = subtotal + iva;
+            return (int) total;
+        } else {
+            return 0; // Si no hay factura o el subtotal es 0, el IVA será 0
+        }
     }
 }

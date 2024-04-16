@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
  *
  * @author valer
  */
+// lista doble circular
 public class LDCHabitacion {
 
     private NodoH inicio;

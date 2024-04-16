@@ -26,7 +26,7 @@ public class Menu {
                     menuItinerario();
                     break;
                 case 3:
- 
+                    //vip
                     break;
                 case 4:
                     f.apilar();
@@ -35,14 +35,16 @@ public class Menu {
                     f.mostrar();
                     break;
                 case 6:
-                    System.exit(0);
+                    //reportes
                     break;
+                case 7:
+                    System.exit(0);
 
             }
         }
     }
     
-    public static void menuClientes() {
+    public void menuClientes() {
         ColaClientes cola = new ColaClientes();
         String[] opciones = {"Ingresar Cliente", "Atender Cliente", "Vaciar lista de clientes", "Ubicar cliente","Cantidad de clientes", "Lista de clientes", "Volver"};
         int opcion = -1;
@@ -67,15 +69,14 @@ public class Menu {
                     cola.mostrarClientes();
                     break;
                 case 6:
-                    System.exit(0);
-                    break;
+                    menuPrincipal();
 
             }
         }
     }
     
 
-    public static void menuHabitaciones() {
+    public void menuHabitaciones() {
         LDCHabitacion l = new LDCHabitacion();
         String[] opciones = {"Agregar Nueva Habitacion", "Ver Habitaciones disponibles", "Reservar habitación", "Eliminar habitación", "Volver"};
         int opcion = -1;
@@ -126,12 +127,12 @@ public class Menu {
                     l.eliminar(idH);
                     break;
                 case 4:
-                    System.exit(0);
+                    menuPrincipal();
             }
         }
     }
     
-    public static void menuItinerario() {
+    public void menuItinerario() {
 
         LESItinerario i = new LESItinerario();
         String[] opciones = {"Ingresar Nueva Actividad", "Ver Todas las Actividades", "Eliminar Actividad", "Mostrar Actividades por Horario", "Volver"};
