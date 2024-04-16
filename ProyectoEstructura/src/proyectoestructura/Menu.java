@@ -9,7 +9,8 @@ import javax.swing.JOptionPane;
 public class Menu {
 
     public void menuPrincipal() {
-        String[] opciones = {"Clientes", "Habitaciones", "Itinerario", "Clientes VIP", "Facturación","Reportes", "Salir"};
+        PilaFactura f=new PilaFactura();
+        String[] opciones = {"Clientes", "Habitaciones", "Itinerario", "Clientes VIP", "Facturación", "Mostrar factura", "Reportes", "Salir"};
         int op = -1;
         while (op != opciones.length - 1) {
             op = JOptionPane.showOptionDialog(null, "Administración de Hotel", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, opciones, "Menu");
@@ -25,11 +26,13 @@ public class Menu {
                     menuItinerario();
                     break;
                 case 3:
-
+ 
                     break;
                 case 4:
+                    f.apilar();
                     break;
                 case 5:
+                    f.mostrar();
                     break;
                 case 6:
                     System.exit(0);
