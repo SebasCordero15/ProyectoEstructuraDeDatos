@@ -15,7 +15,7 @@ public class Principal {
         /*
         
         informacion del cliente // cola
-        -agregar, modificar, eliminar
+        -agregar, modificar, elimi1nar
         
         informacion de habitaciones
         -quemados

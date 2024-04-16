@@ -69,7 +69,7 @@ public class Main {
                 case 4:
                     cola.tamañoCola();
                 case 5:
-                    cola.prioridadCliente(cola.getFrente());
+                    cola.prioridadCliente(cola.getInicio());
                     JOptionPane.showMessageDialog(null, cola.toString());
                     break;
                 case 6:

@@ -13,6 +13,15 @@ public class Cliente {
     private int telefono;
     private String direccion;
 
+    public Cliente() {
+        this.idCliente = "";
+        this.nombre = "";
+        this.apellido = "";
+        this.correo = "";
+        this.telefono = 0;
+        this.direccion = "";
+    }
+    
     public Cliente(String idCliente, String nombre, String apellido, String correo, int telefono, String direccion) {
         this.idCliente = idCliente;
         this.nombre = nombre;

@@ -5,26 +5,26 @@ import javax.swing.JOptionPane;
 
 
 public class Cola {
-    private NodoCola frente;
-    private NodoCola ultimo;
+    private NodoCola inicio;
+    private NodoCola fin;
 
     public Cola() {
     }
 
-    public NodoCola getFrente() {
-        return frente;
+    public NodoCola getInicio() {
+        return inicio;
     }
 
-    public void setFrente(NodoCola frente) {
-        this.frente = frente;
+    public void setInicio(NodoCola inicio) {
+        this.inicio = inicio;
     }
 
-    public NodoCola getUltimo() {
-        return ultimo;
+    public NodoCola getFin() {
+        return fin;
     }
 
-    public void setUltimo(NodoCola ultimo) {
-        this.ultimo = ultimo;
+    public void setFin(NodoCola fin) {
+        this.fin = fin;
     }
     
     public void Encolar(){
@@ -46,34 +46,34 @@ public class Cola {
         
         encolar.setElemento(c);
         
-        if(frente == null){
-            frente = encolar;
-            ultimo = encolar;
+        if(inicio == null){
+            inicio = encolar;
+            fin = encolar;
         }
         else{
-            ultimo.setAtras(encolar);
-            ultimo = encolar;
+            fin.setAtras(encolar);
+            fin = encolar;
         }                                  
     }
 
     public void clienteSiguiente(){
         JOptionPane.showMessageDialog(null,"El proximo cliente de la cola es:"
-                         + "\nNombre: " + frente.getElemento().getNombre()
-                         + "\nCedula: " + frente.getElemento().getCedula()
-                         + "\nEdad: " + frente.getElemento().getEdad()
-                         + "\n¿Tiene Membresia? : " + frente.getElemento().getMembresia()
-                         + "\nFecha de Reserva: " + frente.getElemento().getFechaReserva());
-        frente = frente.getAtras();
+                         + "\nNombre: " + inicio.getElemento().getNombre()
+                         + "\nCedula: " + inicio.getElemento().getCedula()
+                         + "\nEdad: " + inicio.getElemento().getEdad()
+                         + "\n¿Tiene Membresia? : " + inicio.getElemento().getMembresia()
+                         + "\nFecha de Reserva: " + inicio.getElemento().getFechaReserva());
+        inicio = inicio.getAtras();
     }
     
     public void vaciarCola(){
         
-        if(frente != null){
-            while(frente != null){
-                frente = frente.getAtras();
+        if(inicio != null){
+            while(inicio != null){
+                inicio = inicio.getAtras();
             }
 
-            if(frente == null){
+            if(inicio == null){
                 JOptionPane.showMessageDialog(null,"La cola se vacío correctamente.");
             }
         }
@@ -85,7 +85,7 @@ public class Cola {
     public void posicionCliente() {
         int posicion = 0;
         int cedula = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cedula del cliente sin guiones."));
-        NodoCola temp = frente; 
+        NodoCola temp = inicio; 
 
         if (temp == null) {
             JOptionPane.showMessageDialog(null,"La cola está vacía.");
@@ -111,7 +111,7 @@ public class Cola {
     
     public void tamañoCola(){
         int tam = 0;
-        NodoCola temp = frente;
+        NodoCola temp = inicio;
         
         if (temp == null) {
             JOptionPane.showMessageDialog(null,"La cola está vacía.");
@@ -130,7 +130,7 @@ public class Cola {
     public String toString(){
         String cadena = "Los clientes en la cola son:";
         NodoCola temp;
-        temp = frente;
+        temp = inicio;
         
         if(temp == null){
             cadena = "La cola está vacía.";
@@ -163,13 +163,13 @@ public class Cola {
         
         encolar.setElemento(c);
         
-        if(frente == null){
-            frente = encolar;
-            ultimo = encolar;
+        if(inicio == null){
+            inicio = encolar;
+            fin = encolar;
         }
         else{
-            ultimo.setAtras(encolar);
-            ultimo = encolar;
+            fin.setAtras(encolar);
+            fin = encolar;
         }                                 
     }
     
@@ -215,15 +215,15 @@ public class Cola {
                 EncolarClone(elemento);
                 
 
-                frente = frente.getAtras();
+                inicio = inicio.getAtras();
             } else {
                 if (elemento.getElemento().getMembresia().equals("no")) {
                     Encolaraux(elemento);
                     
-                    frente = frente.getAtras();
+                    inicio = inicio.getAtras();
                 }
             }
-            prioridadCliente(frente);
+            prioridadCliente(inicio);
         } else {
 
             while (frenteClone != null) {

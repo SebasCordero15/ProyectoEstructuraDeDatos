@@ -9,13 +9,14 @@ import javax.swing.JOptionPane;
 public class Menu {
 
     public void menuPrincipal() {
-        String[] opciones = {"Clientes", "Habitaciones", "Itinerario", "Clientes VIP", "Facturación", "Salir"};
+        String[] opciones = {"Clientes", "Habitaciones", "Itinerario", "Clientes VIP", "Facturación","Reportes", "Salir"};
         int op = -1;
         while (op != opciones.length - 1) {
-            op = JOptionPane.showOptionDialog(null, "Bienvenido al Hotel", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, opciones, "Menu");
+            op = JOptionPane.showOptionDialog(null, "Administración de Hotel", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, opciones, "Menu");
             switch (op) {
 
                 case 0:
+                    menuClientes();
                     break;
                 case 1:
                     menuHabitaciones();
@@ -29,19 +30,54 @@ public class Menu {
                 case 4:
                     break;
                 case 5:
+                    break;
+                case 6:
                     System.exit(0);
                     break;
 
             }
         }
     }
+    
+    public static void menuClientes() {
+        ColaClientes cola = new ColaClientes();
+        String[] opciones = {"Ingresar Cliente", "Atender Cliente", "Vaciar lista de clientes", "Ubicar cliente","Cantidad de clientes", "Lista de clientes", "Volver"};
+        int opcion = -1;
+        while (opcion != opciones.length - 1) {
+            opcion = JOptionPane.showOptionDialog(null, "Administrar Clientes", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, opciones, "Menu");;
+            switch (opcion) {
+                case 0:
+                    cola.agregarCliente();
+                    break;
+                case 1:
+                    cola.siguiente();
+                    break;
+                case 2:
+                    cola.vaciarCola();
+                    break;
+                case 3:
+                    cola.posicionCliente();
+                    break;
+                case 4:
+                    cola.getTamaño();
+                case 5:
+                    cola.mostrarClientes();
+                    break;
+                case 6:
+                    System.exit(0);
+                    break;
+
+            }
+        }
+    }
+    
 
     public static void menuHabitaciones() {
         LDCHabitacion l = new LDCHabitacion();
-        String[] opciones = {"Agregar Nueva Habitacion", "Ver Habitaciones disponibles", "Reservar habitación", "Eliminar habitación", "Salir"};
+        String[] opciones = {"Agregar Nueva Habitacion", "Ver Habitaciones disponibles", "Reservar habitación", "Eliminar habitación", "Volver"};
         int opcion = -1;
         while (opcion != opciones.length - 1) {
-            opcion = JOptionPane.showOptionDialog(null, "Menu Habitaciones", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, opciones, "Menu");;
+            opcion = JOptionPane.showOptionDialog(null, "Administrar Habitaciones", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, opciones, "Menu");;
             switch (opcion) {
                 case 0:
                     int id = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el ID de la habitación"));
@@ -95,7 +131,7 @@ public class Menu {
     public static void menuItinerario() {
 
         LESItinerario i = new LESItinerario();
-        String[] opciones = {"Ingresar Nueva Actividad", "Ver Todas las Actividades", "Eliminar Actividad", "Mostrar Actividades por Horario", "Salir"};
+        String[] opciones = {"Ingresar Nueva Actividad", "Ver Todas las Actividades", "Eliminar Actividad", "Mostrar Actividades por Horario", "Volver"};
         int opcion = -1;
         while (opcion != opciones.length - 1) {
             opcion = JOptionPane.showOptionDialog(null, "Administrar itinerario del hotel", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, opciones, "Menu");
