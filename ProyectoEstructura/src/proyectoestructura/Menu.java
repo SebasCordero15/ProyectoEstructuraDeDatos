@@ -10,7 +10,7 @@ public class Menu {
 
     public void menuPrincipal() {
         PilaFactura f=new PilaFactura();
-        String[] opciones = {"Clientes", "Habitaciones", "Itinerario", "Clientes VIP", "Facturación", "Mostrar factura", "Reportes", "Salir"};
+        String[] opciones = {"Clientes", "Habitaciones", "Itinerario","Clientes VIP", "Facturación", "Mostrar factura", "Reportes", "Salir"};
         int op = -1;
         while (op != opciones.length - 1) {
             op = JOptionPane.showOptionDialog(null, "Administración de Hotel", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, opciones, "Menu");
@@ -26,7 +26,7 @@ public class Menu {
                     menuItinerario();
                     break;
                 case 3:
-                    //vip
+                    menuVip();
                     break;
                 case 4:
                     f.apilar();
@@ -46,7 +46,8 @@ public class Menu {
     
     public void menuClientes() {
         ColaClientes cola = new ColaClientes();
-        String[] opciones = {"Ingresar Cliente", "Atender Cliente", "Vaciar lista de clientes", "Ubicar cliente","Cantidad de clientes", "Lista de clientes", "Volver"};
+        ArbolVip arbol = new ArbolVip();
+        String[] opciones = {"Ingresar Cliente", "Atender Cliente", "Vaciar lista de clientes", "Ubicar cliente","Cantidad de clientes", "Volver"};
         int opcion = -1;
         while (opcion != opciones.length - 1) {
             opcion = JOptionPane.showOptionDialog(null, "Administrar Clientes", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, opciones, "Menu");;
@@ -66,9 +67,6 @@ public class Menu {
                 case 4:
                     cola.getTamaño();
                 case 5:
-                    cola.mostrarClientes();
-                    break;
-                case 6:
                     menuPrincipal();
 
             }
@@ -161,7 +159,33 @@ public class Menu {
                     System.out.println(i.imprimirHorarios(horarioP[horarios]));
                     break;
                 case 4:
-                    System.exit(0);
+                    menuPrincipal();
+            }
+        }
+    }
+    
+    public void menuVip() {
+        ArbolVip arbol = new ArbolVip();
+        String[] opciones = {"Añadir Cliente VIP", "Ver clientes en orden", "Ver clientes pre orden", "Ver clientes post orden", "Salir"};
+        int opcion = -1;
+        while (opcion != opciones.length - 1) {
+            opcion = JOptionPane.showOptionDialog(null, "Menu Clientes", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, opciones, "Menu");;
+            switch (opcion) {
+                case 0:
+                    arbol.crearRaiz();
+                    break;
+                case 1:
+                    arbol.inOrden();
+                    break;
+                case 2:
+                    arbol.preOrden();
+                    break;
+                case 3:
+                    arbol.postOrden();
+                    break;
+                case 4:
+                    menuPrincipal();
+
             }
         }
     }

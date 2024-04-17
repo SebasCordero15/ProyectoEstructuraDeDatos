@@ -8,27 +8,29 @@ public class Cliente {
 
     private String idCliente;
     private String nombre;
-    private String apellido;
+    private int edad;
     private String correo;
     private int telefono;
     private String direccion;
+    private boolean vip;
 
     public Cliente() {
         this.idCliente = "";
         this.nombre = "";
-        this.apellido = "";
+        this.edad = 0;
         this.correo = "";
         this.telefono = 0;
         this.direccion = "";
     }
     
-    public Cliente(String idCliente, String nombre, String apellido, String correo, int telefono, String direccion) {
+    public Cliente(String idCliente, String nombre, int edad, String correo, int telefono, String direccion, boolean vip) {
         this.idCliente = idCliente;
         this.nombre = nombre;
-        this.apellido = apellido;
+        this.edad = edad;
         this.correo = correo;
         this.telefono = telefono;
         this.direccion = direccion;
+        this.vip = false;
     }
 
     public String getIdCliente() {
@@ -47,12 +49,12 @@ public class Cliente {
         this.nombre = nombre;
     }
 
-    public String getApellido() {
-        return apellido;
+    public int getEdad() {
+        return edad;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setEdad(int edad) {
+        this.edad = edad;
     }
 
     public String getCorreo() {
@@ -78,11 +80,22 @@ public class Cliente {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
+    
+    public boolean isVip() {
+        return vip;
+    }
+
+    public void setVip(boolean vip) {
+        this.vip = vip;
+    }
+    
 
     @Override
     public String toString() {
-        return "ID: " + idCliente + ", Nombre: " + nombre + ", Apellido: " + apellido
+        return "ID: " + idCliente + ", Nombre: " + nombre + ", Edad: " + edad
                 + ", Correo: " + correo + ", Teléfono: " + telefono + ", Dirección: " + direccion;
     }
+
+    
 
 }

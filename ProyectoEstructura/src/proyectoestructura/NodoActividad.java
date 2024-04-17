@@ -4,11 +4,11 @@ package proyectoestructura;
  *
  * @author valer
  */
-public class NodoA {
+public class NodoActividad {
     private Actividad dato;
-    private NodoA siguiente;
+    private NodoActividad siguiente;
     
-    public NodoA(){
+    public NodoActividad(){
         this.siguiente = null;
     }
 
@@ -20,11 +20,11 @@ public class NodoA {
         this.dato = dato;
     }
 
-    public NodoA getSiguiente() {
+    public NodoActividad getSiguiente() {
         return siguiente;
     }
 
-    public void setSiguiente(NodoA siguiente) {
+    public void setSiguiente(NodoActividad siguiente) {
         this.siguiente = siguiente;
     }
     

@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 // lista enlazada simple
 public class LESItinerario {
 
-    private NodoA inicio;
+    private NodoActividad inicio;
 
     public LESItinerario() {
         this.inicio = null;
@@ -24,42 +24,28 @@ public class LESItinerario {
     }
 
     public void insertar(Actividad a) {
-
-        NodoA nuevo = new NodoA();
-        
+        NodoActividad nuevo = new NodoActividad();
         nuevo.setDato(a);
-        
         if (vacia()) {
             inicio = nuevo;
-            /* si el valor que voy a a insertar es menor que el que esta en la lista
-            se inserta el dato a la izquierda ej. tengo un 10 y voy a insertar un 5 */
         } else if (a.getIdActividad() < inicio.getDato().getIdActividad()) {
-            // creo el enlace
             nuevo.setSiguiente(inicio);
-            // se coloca el dato inicial
             inicio = nuevo;
-            // si el valor del ultimo en la lista (siguiente) es null e coloca a la derecha
         } else if (inicio.getSiguiente() == null) {
             inicio.setSiguiente(nuevo);
-        } else {// insertar al medio
-            NodoA aux = inicio;
-            /*mientras el dato siguinte no este nulo y el dato a insertar sea
-            mayor que el de la lista apunta al siguiente*/
+            NodoActividad aux = inicio;
             while ((aux.getSiguiente() != null) && aux.getSiguiente().getDato().getIdActividad()< a.getIdActividad()) {
                 aux = aux.getSiguiente();
             }
-            //creo el enlace al siguiente
             nuevo.setSiguiente(aux.getSiguiente());
-            // se inserta en el medio
             aux.setSiguiente(nuevo);
-
         }
     }
     
     public void mostrar() {
         if (!vacia()) {
             String s = "";
-            NodoA aux = inicio;
+            NodoActividad aux = inicio;
             while (aux != null) {
                 s += aux.toString();
                 aux = aux.getSiguiente();
@@ -78,8 +64,8 @@ public class LESItinerario {
                 JOptionPane.showMessageDialog(null, "Actividad eliminada");
             }
             else{
-                NodoA anterior;
-                NodoA aux;
+                NodoActividad anterior;
+                NodoActividad aux;
                 anterior = inicio;
                 aux = inicio.getSiguiente();
                 
@@ -104,7 +90,7 @@ public class LESItinerario {
         String s = "";
         String diurnas = "";
         String nocturnas = "";
-        NodoA aux = inicio;
+        NodoActividad aux = inicio;
         
         if(inicio != null){
             if(horario.equalsIgnoreCase("Diurno")){

@@ -9,8 +9,8 @@ import javax.swing.JOptionPane;
 // lista doble circular
 public class LDCHabitacion {
 
-    private NodoH inicio;
-    private NodoH fin;
+    private NodoHabitacion inicio;
+    private NodoHabitacion fin;
 
     public LDCHabitacion() {
         this.inicio = null;
@@ -26,7 +26,7 @@ public class LDCHabitacion {
     }
 
     public void insertarHabitacion(Habitacion h) {
-        NodoH nuevo = new NodoH();
+        NodoHabitacion nuevo = new NodoHabitacion();
         nuevo.setElemento(h);
 
         if (vacia()) {
@@ -45,7 +45,7 @@ public class LDCHabitacion {
             fin.setSiguiente(inicio);
             inicio.setAnterior(fin);
         } else { // insertar al medio
-            NodoH aux = inicio;
+            NodoHabitacion aux = inicio;
             while (aux.getSiguiente().getElemento().getIdHabitacion() < h.getIdHabitacion()) {
                 aux = aux.getSiguiente();
             }
@@ -63,8 +63,8 @@ public class LDCHabitacion {
         }else{
             mostrar();
         }
-        NodoH actual = inicio;
-        NodoH anterior = fin;
+        NodoHabitacion actual = inicio;
+        NodoHabitacion anterior = fin;
 
         do {
             if (actual.getElemento().getIdHabitacion() == idH) {// si encuentra la habitacion
@@ -93,7 +93,7 @@ public class LDCHabitacion {
     }
 
     public String mostrar() {
-        NodoH aux = inicio;
+        NodoHabitacion aux = inicio;
         String s = "Habitaciones \n";
         if (!vacia()) {
             s += aux.getElemento().toString() + "\n";
@@ -109,7 +109,7 @@ public class LDCHabitacion {
     }
 
     public String mostrarDisponible() {
-        NodoH aux = inicio;
+        NodoHabitacion aux = inicio;
         boolean disponibles = false;
         String s = "Habitaciones \n";
 
@@ -137,7 +137,7 @@ public class LDCHabitacion {
     }
 
     public void reservar(int idH) {
-        NodoH aux = inicio;
+        NodoHabitacion aux = inicio;
 
         if (!vacia()) {
 
@@ -161,7 +161,7 @@ public class LDCHabitacion {
 
     public String mostrarReserva(String tipo) {
         String print = "";
-        NodoH aux = inicio;
+        NodoHabitacion aux = inicio;
 
         if (!vacia()) {
 

@@ -6,12 +6,12 @@ package proyectoestructura;
  */
 
 // lista doble circular
-public class NodoH {
+public class NodoHabitacion {
     private Habitacion elemento;
-    private NodoH siguiente;
-    private NodoH anterior;
+    private NodoHabitacion siguiente;
+    private NodoHabitacion anterior;
 
-    public NodoH() {
+    public NodoHabitacion() {
         this.siguiente = null;
         this.anterior = null;
     }
@@ -24,19 +24,19 @@ public class NodoH {
         this.elemento = elemento;
     }
 
-    public NodoH getSiguiente() {
+    public NodoHabitacion getSiguiente() {
         return siguiente;
     }
 
-    public void setSiguiente(NodoH siguiente) {
+    public void setSiguiente(NodoHabitacion siguiente) {
         this.siguiente = siguiente;
     }
 
-    public NodoH getAnterior() {
+    public NodoHabitacion getAnterior() {
         return anterior;
     }
 
-    public void setAnterior(NodoH anterior) {
+    public void setAnterior(NodoHabitacion anterior) {
         this.anterior = anterior;
     }
 

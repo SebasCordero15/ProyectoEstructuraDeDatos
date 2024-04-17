@@ -24,7 +24,7 @@ public class Factura {
         this.total = 0;
     }
 
-    public Factura(String nombre, String cedula, String tipoHabitacion, int cantidadNoches, double subtotal, double total) {
+    public Factura(String nombre, String cedula, String tipoHabitacion, int cantidadNoches) {
         this.nombre = nombre;
         this.cedula = cedula;
         this.tipoHabitacion = tipoHabitacion;
@@ -63,22 +63,6 @@ public class Factura {
 
     public void setCantidadNoches(int cantidadNoches) {
         this.cantidadNoches = cantidadNoches;
-    }
-
-    public double getSubtotal() {
-        return subtotal;
-    }
-
-    public void setSubtotal(double subtotal) {
-        this.subtotal = subtotal;
-    }
-
-    public double getTotal() {
-        return total;
-    }
-
-    public void setTotal(double total) {
-        this.total = total;
     }
 
     

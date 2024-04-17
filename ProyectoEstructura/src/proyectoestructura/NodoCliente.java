@@ -4,12 +4,12 @@ package proyectoestructura;
  *
  * @author yules
  */
-public class NodoC {
+public class NodoCliente {
 
     private Cliente cliente;
-    private NodoC siguiente;
+    private NodoCliente siguiente;
 
-    public NodoC() {
+    public NodoCliente() {
         this.siguiente = null;
     }
 
@@ -21,11 +21,11 @@ public class NodoC {
         this.cliente = cliente;
     }
 
-    public NodoC getSiguiente() {
+    public NodoCliente getSiguiente() {
         return siguiente;
     }
 
-    public void setSiguiente(NodoC siguiente) {
+    public void setSiguiente(NodoCliente siguiente) {
         this.siguiente = siguiente;
     }
 }

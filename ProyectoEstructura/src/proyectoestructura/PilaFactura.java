@@ -28,13 +28,12 @@ public class PilaFactura {
     }
 
     public void apilar() {
-
         Factura f = new Factura();
         f.setCedula(JOptionPane.showInputDialog("Ingrese la cedula del cliente: "));
         f.setNombre(JOptionPane.showInputDialog("Ingrese el nombre del cliente: "));
         String[] tipoHabitacion = {"Estandar", "Deluxe"};
         int tipo = JOptionPane.showOptionDialog(null, "Tipo de Habitación", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, tipoHabitacion, "Menu");
-        String tipoH;
+        String tipoH ="";
         switch (tipo) {
             case 0:
                 tipoH = "Estandar";
@@ -42,24 +41,17 @@ public class PilaFactura {
             case 1:
                 tipoH = "Deluxe";
                 break;
-            default:
-                tipoH = ""; // Manejar cualquier otro caso que no esté cubierto
-                break;
         }
         f.setTipoHabitacion(tipoH);
         f.setCantidadNoches(Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de noches: ")));
 
         NodoFactura nuevo = new NodoFactura();
-
         nuevo.setDato(f);
 
         if (vacia()) {
-            //Si la pila esta vacia el dato nuevo es la nueva cima
             cima = nuevo;
         } else {
-            //creamos un puntero al siguiente nodo
             nuevo.setSiguiente(cima);
-            //colocamos el nodo en la cima
             cima = nuevo;
         }
     }

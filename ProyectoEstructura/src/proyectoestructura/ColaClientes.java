@@ -9,8 +9,8 @@ import javax.swing.JOptionPane;
 //cola
 public class ColaClientes {
 
-    private NodoC inicio;
-    private NodoC fin;
+    private NodoCliente inicio;
+    private NodoCliente fin;
 
     public ColaClientes() {
         this.inicio = null;
@@ -29,13 +29,12 @@ public class ColaClientes {
         Cliente c = new Cliente();
         c.setIdCliente(JOptionPane.showInputDialog("Ingrese el ID del cliente:"));
         c.setNombre(JOptionPane.showInputDialog("Ingrese el nombre del cliente:"));
-        c.setApellido(JOptionPane.showInputDialog("Ingrese el apellido del cliente:"));
+        c.setEdad(Integer.parseInt(JOptionPane.showInputDialog("Ingrese la edad del cliente:")));
         c.setCorreo(JOptionPane.showInputDialog("Ingrese el correo del cliente:"));
         c.setTelefono(Integer.parseInt(JOptionPane.showInputDialog("Ingrese el teléfono del cliente:")));
         c.setDireccion(JOptionPane.showInputDialog("Ingrese la dirección del cliente:"));
 
-        NodoC nuevo = new NodoC();
-
+        NodoCliente nuevo = new NodoCliente();
         nuevo.setCliente(c);
 
         if (vacia()) {
@@ -52,7 +51,8 @@ public class ColaClientes {
             System.out.println("La lista está vacia");
         } else {
             JOptionPane.showMessageDialog(null, "El proximo cliente de la cola es:"
-                    + "\nNombre: " + inicio.getCliente().getNombre() + " " + inicio.getCliente().getApellido()
+                    + "\nNombre: " + inicio.getCliente().getNombre()
+                    + "\nEdad: " + inicio.getCliente().getEdad()
                     + "\nCedula: " + inicio.getCliente().getIdCliente()
                     + "\nCorreo: " + inicio.getCliente().getCorreo()
                     + "\nTelefono : " + inicio.getCliente().getTelefono()
@@ -64,8 +64,8 @@ public class ColaClientes {
 
     public boolean eliminarCliente(String idCliente) {
         boolean encontrado = false;
-        NodoC aux = inicio;
-        NodoC anterior = null;
+        NodoCliente aux = inicio;
+        NodoCliente anterior = null;
 
         while (aux != null) {
             Cliente c = aux.getCliente();
@@ -76,7 +76,7 @@ public class ColaClientes {
                 } else {
                     inicio = aux.getSiguiente();
                 }
-                JOptionPane.showMessageDialog(null, "El cliente " + aux.getCliente().getNombre() + aux.getCliente().getApellido() + " fue eliminado");
+                JOptionPane.showMessageDialog(null, "El cliente " + aux.getCliente().getNombre() + " fue eliminado");
                 break;
             }
             anterior = aux;
@@ -93,7 +93,7 @@ public class ColaClientes {
     public void posicionCliente() {
         int posicion = 0;
         int cedula = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cedula del cliente sin guiones."));
-        NodoC aux = inicio;
+        NodoCliente aux = inicio;
 
         if (aux == null) {
             JOptionPane.showMessageDialog(null, "La cola está vacía.");
@@ -117,7 +117,7 @@ public class ColaClientes {
 
     public void getTamaño() {
         int tam = 0;
-        NodoC temp = inicio;
+        NodoCliente temp = inicio;
 
         if (temp == null) {
             JOptionPane.showMessageDialog(null, "La cola está vacía.");
@@ -133,7 +133,7 @@ public class ColaClientes {
     public void mostrarClientes() {
         if (!vacia()) {
             String s = "";
-            NodoC aux = inicio;
+            NodoCliente aux = inicio;
             while (aux != null) {
                 s += aux.getCliente().toString()
                         + "---------------------------------------\n";
