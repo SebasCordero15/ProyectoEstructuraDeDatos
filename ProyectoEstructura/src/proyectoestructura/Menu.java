@@ -10,7 +10,8 @@ public class Menu {
 
     public void menuPrincipal() {
         PilaFactura f=new PilaFactura();
-        String[] opciones = {"Clientes", "Habitaciones", "Itinerario","Clientes VIP", "Facturación", "Mostrar factura", "Reportes", "Salir"};
+        Matriz g = new Matriz(5);
+        String[] opciones = {"Clientes", "Habitaciones", "Itinerario","Clientes VIP", "Facturación", "Mostrar factura", "Como llegar", "Salir"};
         int op = -1;
         while (op != opciones.length - 1) {
             op = JOptionPane.showOptionDialog(null, "Administración de Hotel", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, opciones, "Menu");
@@ -35,7 +36,7 @@ public class Menu {
                     f.mostrar();
                     break;
                 case 6:
-                    //reportes
+                    MostrarCamino();
                     break;
                 case 7:
                     System.exit(0);
@@ -188,6 +189,23 @@ public class Menu {
 
             }
         }
+    }
+    
+    public void MostrarCamino(){
+        Matriz g = new Matriz(5); 
+        g.agregarUbi(0, "Casa");
+        g.agregarUbi(1, "Terminal de autobuses");
+        g.agregarUbi(2, "Parque Central");
+        g.agregarUbi(3, "Supermercado");
+        g.agregarUbi(4, "Hotel");
+        
+        g.agregarCone(0, 1);
+        g.agregarCone(1, 2);
+        g.agregarCone(2, 3);
+        g.agregarCone(3, 4);
+        
+        int[] ruta = {0, 1, 2, 3};
+        g.ruta(ruta);
     }
 
 }
