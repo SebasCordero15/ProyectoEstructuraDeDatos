@@ -4,7 +4,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author valer
+ * @author yules
  */
 public class Menu {
 
