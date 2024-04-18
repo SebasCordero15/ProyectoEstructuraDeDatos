@@ -6,7 +6,7 @@ package proyectoestructura;
  */
 public class Cliente {
 
-    private String idCliente;
+    private int idCliente;
     private String nombre;
     private int edad;
     private String correo;
@@ -15,7 +15,7 @@ public class Cliente {
     private boolean vip;
 
     public Cliente() {
-        this.idCliente = "";
+        this.idCliente = 0;
         this.nombre = "";
         this.edad = 0;
         this.correo = "";
@@ -23,7 +23,7 @@ public class Cliente {
         this.direccion = "";
     }
     
-    public Cliente(String idCliente, String nombre, int edad, String correo, int telefono, String direccion, boolean vip) {
+    public Cliente(int idCliente, String nombre, int edad, String correo, int telefono, String direccion, boolean vip) {
         this.idCliente = idCliente;
         this.nombre = nombre;
         this.edad = edad;
@@ -33,11 +33,11 @@ public class Cliente {
         this.vip = false;
     }
 
-    public String getIdCliente() {
+    public int getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(String idCliente) {
+    public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
     }
 
@@ -79,14 +79,6 @@ public class Cliente {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
-    }
-    
-    public boolean isVip() {
-        return vip;
-    }
-
-    public void setVip(boolean vip) {
-        this.vip = vip;
     }
     
 

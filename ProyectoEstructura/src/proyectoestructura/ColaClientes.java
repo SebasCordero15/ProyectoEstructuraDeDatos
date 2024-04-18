@@ -27,7 +27,7 @@ public class ColaClientes {
 
     public void agregarCliente() {
         Cliente c = new Cliente();
-        c.setIdCliente(JOptionPane.showInputDialog("Ingrese el ID del cliente:"));
+        c.setIdCliente(Integer.parseInt(JOptionPane.showInputDialog("Ingrese el ID del cliente:")));
         c.setNombre(JOptionPane.showInputDialog("Ingrese el nombre del cliente:"));
         c.setEdad(Integer.parseInt(JOptionPane.showInputDialog("Ingrese la edad del cliente:")));
         c.setCorreo(JOptionPane.showInputDialog("Ingrese el correo del cliente:"));
@@ -62,7 +62,7 @@ public class ColaClientes {
 
     }
 
-    public boolean eliminarCliente(String idCliente) {
+    public boolean eliminarCliente(int idCliente) {
         boolean encontrado = false;
         NodoCliente aux = inicio;
         NodoCliente anterior = null;
@@ -99,7 +99,7 @@ public class ColaClientes {
             JOptionPane.showMessageDialog(null, "La cola está vacía.");
         } else {
             while (aux != null) {
-                if (aux.getCliente().getIdCliente().equals(cedula)) {
+                if (aux.getCliente().getIdCliente()==cedula) {
                     posicion += 1;
                     JOptionPane.showMessageDialog(null, "La persona buscada está en la posición número " + posicion + ".");
                     break;

@@ -60,29 +60,28 @@ public class LDCHabitacion {
         if (vacia()) {
             System.out.println("No hay habitaciones por eliminar");
             return null;
-        }else{
+        } else {
             mostrar();
         }
+
         NodoHabitacion actual = inicio;
         NodoHabitacion anterior = fin;
 
         do {
-            if (actual.getElemento().getIdHabitacion() == idH) {// si encuentra la habitacion
-                if (actual == inicio && actual == fin) { // si solo hay una habitaicon en la lista
+            if (actual.getElemento().getIdHabitacion() == idH) { // si encuentra la habitacion
+                if (inicio == fin) { // si solo hay una habitación en la lista
                     inicio = null;
                     fin = null;
                 } else if (actual == inicio) { // si el encontrado es el inicio
                     inicio = inicio.getSiguiente();
                     fin.setSiguiente(inicio);
-                } else if (actual == fin) {// si el encontrado es el ultimo
+                } else if (actual == fin) { // si el encontrado es el último
+                    anterior.setSiguiente(inicio);
                     fin = anterior;
-                    fin.setSiguiente(inicio);
-
                 } else {
                     anterior.setSiguiente(actual.getSiguiente());
                 }
                 return actual.getElemento();
-
             }
             anterior = actual;
             actual = actual.getSiguiente();
@@ -111,7 +110,7 @@ public class LDCHabitacion {
     public String mostrarDisponible() {
         NodoHabitacion aux = inicio;
         boolean disponibles = false;
-        String s = "Habitaciones \n";
+        String s = "\nHabitaciones disponibles";
 
         if (!vacia()) {
             if (aux.getElemento().getDisponibilidad().equalsIgnoreCase("SI")) {
@@ -143,6 +142,7 @@ public class LDCHabitacion {
 
             if (aux.getElemento().getIdHabitacion() == idH) {
                 aux.getElemento().setDisponibilidad("NO");
+                System.out.println("Habitación reservada!");
             }
 
             aux = aux.getSiguiente();
@@ -151,6 +151,7 @@ public class LDCHabitacion {
 
                 if (aux.getElemento().getIdHabitacion() == idH) {
                     aux.getElemento().setDisponibilidad("NO");
+                    System.out.println("Habitación reservada!");
                     break;
                 }
 
@@ -178,7 +179,7 @@ public class LDCHabitacion {
                 aux = aux.getSiguiente();
             }
         } else {
-            print = "La lista de habitaciones está vacía";
+            print = "\nLa lista de habitaciones está vacía";
         }
 
         return print;

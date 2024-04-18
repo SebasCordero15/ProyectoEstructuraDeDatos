@@ -5,6 +5,7 @@ package proyectoestructura;
  * @author valer
  */
 public class Actividad {
+
     private int idActividad;
     private String descripcion;
     private String horario;
@@ -16,6 +17,7 @@ public class Actividad {
         this.horario = "";
         this.costo = 0.0d;
     }
+
     public Actividad(int idActividad, String descripcion, String horario, int costo) {
         this.idActividad = idActividad;
         this.descripcion = descripcion;
@@ -57,9 +59,7 @@ public class Actividad {
 
     @Override
     public String toString() {
-        return "Actividad: [" + "ID: " + idActividad + ", Descripción: " + descripcion + ", Horario:" + horario + ", Costo:" + costo + ']';
+        return "- " + "ID: " + idActividad + ", Descripción: " + descripcion + ", Horario:" + horario + ", Costo:" + costo + "\n";
     }
-    
-    
-    
+
 }

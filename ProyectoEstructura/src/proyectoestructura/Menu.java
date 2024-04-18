@@ -11,7 +11,7 @@ public class Menu {
     public void menuPrincipal() {
         PilaFactura f=new PilaFactura();
         Matriz g = new Matriz(5);
-        String[] opciones = {"Clientes", "Habitaciones", "Itinerario","Clientes VIP", "Facturación", "Mostrar factura", "Como llegar", "Salir"};
+        String[] opciones = {"Clientes", "Habitaciones", "Itinerario", "Facturación", "Mostrar factura", "Como llegar", "Salir"};
         int op = -1;
         while (op != opciones.length - 1) {
             op = JOptionPane.showOptionDialog(null, "Administración de Hotel", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, opciones, "Menu");
@@ -19,26 +19,17 @@ public class Menu {
 
                 case 0:
                     menuClientes();
-                    break;
                 case 1:
                     menuHabitaciones();
-                    break;
                 case 2:
                     menuItinerario();
-                    break;
                 case 3:
-                    menuVip();
-                    break;
-                case 4:
                     f.apilar();
-                    break;
-                case 5:
+                case 4:
                     f.mostrar();
-                    break;
-                case 6:
+                case 5:
                     MostrarCamino();
-                    break;
-                case 7:
+                case 6:
                     System.exit(0);
 
             }
@@ -47,7 +38,6 @@ public class Menu {
     
     public void menuClientes() {
         ColaClientes cola = new ColaClientes();
-        ArbolVip arbol = new ArbolVip();
         String[] opciones = {"Ingresar Cliente", "Atender Cliente", "Vaciar lista de clientes", "Ubicar cliente","Cantidad de clientes", "Volver"};
         int opcion = -1;
         while (opcion != opciones.length - 1) {
@@ -67,8 +57,10 @@ public class Menu {
                     break;
                 case 4:
                     cola.getTamaño();
+                    break;
                 case 5:
                     menuPrincipal();
+                    break;
 
             }
         }
@@ -165,38 +157,14 @@ public class Menu {
         }
     }
     
-    public void menuVip() {
-        ArbolVip arbol = new ArbolVip();
-        String[] opciones = {"Añadir Cliente VIP", "Ver clientes en orden", "Ver clientes pre orden", "Ver clientes post orden", "Salir"};
-        int opcion = -1;
-        while (opcion != opciones.length - 1) {
-            opcion = JOptionPane.showOptionDialog(null, "Menu Clientes", "Seleccionar", 0, JOptionPane.QUESTION_MESSAGE, null, opciones, "Menu");;
-            switch (opcion) {
-                case 0:
-                    arbol.crearRaiz();
-                    break;
-                case 1:
-                    arbol.inOrden();
-                    break;
-                case 2:
-                    arbol.preOrden();
-                    break;
-                case 3:
-                    arbol.postOrden();
-                    break;
-                case 4:
-                    menuPrincipal();
-
-            }
-        }
-    }
+    
     
     public void MostrarCamino(){
         Matriz g = new Matriz(5); 
         g.agregarUbi(0, "Casa");
         g.agregarUbi(1, "Terminal de autobuses");
-        g.agregarUbi(2, "Parque Central");
-        g.agregarUbi(3, "Supermercado");
+        g.agregarUbi(2, "Guanacaste");
+        g.agregarUbi(3, "Tamarindo");
         g.agregarUbi(4, "Hotel");
         
         g.agregarCone(0, 1);
